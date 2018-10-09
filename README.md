@@ -39,6 +39,8 @@ KTO BY NECHAPAL DOLE UVEDENE VECI VOLAJTE NA 0915 037 045 - banas
   
   9.9. 21:10  vystup z konzoly po napisani "fero cervenak" do textfieldu a kliknuti na tlacitko: 
   
+  {::nomarkdown}
+
   <?xml version="1.0" encoding="UTF-8"?>
 <car-rent>
   <orderperson>
@@ -60,3 +62,5 @@ KTO BY NECHAPAL DOLE UVEDENE VECI VOLAJTE NA 0915 037 045 - banas
     </person>
   </passengers>
 </car-rent>
+
+{:/}
