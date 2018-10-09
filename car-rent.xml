@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="car-rent.xsl"?>
+<car-rent orderid="889923"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="car-rent.xsd">
+  <orderperson>
+    <person>
+      <name>John Smith</name>
+      <date-of-birth>09-12-1993</date-of-birth>
+      <id>EC123056</id>
+      <email>john@smith.com</email>
+      <phone-number>+421911099339</phone-number>
+    </person>
+  </orderperson>
+  <passengers>
+    <person>
+      <name>John Smith</name>
+      <date-of-birth>09-12-1993</date-of-birth>
+      <id>EC123056</id>
+      <email>john@smith.com</email>
+      <phone-number>+421911099339</phone-number>
+    </person>
+    <person>
+      <name>John Smith</name>
+      <date-of-birth>09-12-1993</date-of-birth>
+      <id>EC123056</id>
+      <email>john@smith.com</email>
+      <phone-number>+421911099339</phone-number>
+    </person>
+    <person>
+      <name>John Smith</name>
+      <date-of-birth>09-12-1993</date-of-birth>
+      <id>EC123056</id>
+      <email>john@smith.com</email>
+      <phone-number>+421911099339</phone-number>
+    </person>
+  </passengers>
+  <car>
+    <brand>Skoda</brand>
+    <type>Octavia</type>
+    <year>2005</year>
+    <color>Gray</color>
+    <license-plate>BL123CA</license-plate>
+  </car>
+  <price>10.56</price>
+</car-rent>
