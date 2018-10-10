@@ -4,9 +4,14 @@ import javafx.scene.effect.PerspectiveTransform;
 import org.jdom2.*;
 import org.jdom2.output.Format;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class XMLOutputter {
 
-    public static void spracuj(Person customer){
+    public static void spracuj(Person customer, Car customerCar){
+
+        try {
 
         // create the jdom
         Document jdomDoc = new Document();
@@ -25,7 +30,7 @@ public class XMLOutputter {
                 person.addContent(name);
 
                 Element date = new Element("date-of-birth");
-                date.addContent("456");
+                date.addContent(customer.getDateOfBirth().toString());
                 person.addContent(date);
 
                 Element id = new Element("id");
@@ -42,6 +47,49 @@ public class XMLOutputter {
 
         rootElement.addContent(orderPerson);
 
+
+        Element car = new Element("car");
+
+            Element brand = new Element("brand");
+            brand.addContent("skoda");
+            //brand.addContent(customerCar.getBrand());
+            car.addContent(brand);
+
+            Element type = new Element("type");
+            type.addContent("hatchback");
+            //brand.addContent(customerCar.getType());
+            car.addContent(type);
+
+            Element model = new Element("model");
+            model.addContent("octavia");
+            //brand.addContent(customerCar.getModel());
+            car.addContent(model);
+
+            Element engine = new Element("engine");
+            engine.addContent("1.9 tdi");
+            //brand.addContent(customerCar.getMotor());
+            car.addContent(engine);
+
+            Element color = new Element("color");
+            color.addContent("grey");
+            //brand.addContent(customerCar.getColor());
+            car.addContent(color);
+
+            Element numberOfDays = new Element("number-of-days");
+            numberOfDays.addContent("5");
+            //brand.addContent(customerCar.getDayCount());
+            car.addContent(numberOfDays);
+
+            Element price = new Element("price");
+            price.addContent("15");
+            car.addContent(price);
+
+        rootElement.addContent(car);
+
+
+
+
+        /*
         Element passengers = new Element("passengers");
 
             Element passPerson = new Element("person");
@@ -69,10 +117,7 @@ public class XMLOutputter {
 
         rootElement.addContent(passengers);
 
-        //************************************
-        // DOROBIT ZVYSOK ALE ROZUMNE
-        //************************************
-
+        */
 
         // add attributes
         //Attribute nameAttr = new Attribute("name", "John Smith");
@@ -84,6 +129,13 @@ public class XMLOutputter {
         // we want to format the xml. This is used only for demonstration. pretty formatting adds extra spaces and is generally not required.
         xml.setFormat(Format.getPrettyFormat());
         System.out.println(xml.outputString(jdomDoc));
+
+        xml.output(jdomDoc, new FileWriter("/Users/tadeasbronis/Downloads/final.xml"));
+
+        System.out.println("File Saved!");
+    } catch (IOException io) {
+        System.out.println(io.getMessage());
+    }
 
     }
 }

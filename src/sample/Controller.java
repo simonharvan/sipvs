@@ -9,7 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import java.util.Date;
+
+
+import java.time.LocalDate;
 
 import static sample.XMLOutputter.spracuj;
 import static sample.XMLValidator.validate;
@@ -17,7 +19,7 @@ import static sample.XMLValidator.validate;
 public class Controller implements EventHandler<ActionEvent> {
 
     public TextField nameTextField, evidenceNumberTextField, emailTextField, telephoneTextField, xmlTextField, xsdTextField;
-    public Date dateTextField;
+    public LocalDate dateTextField;
     public Label label;
     Button nameButton = new Button();
     TextArea ta = new TextArea();
@@ -41,7 +43,17 @@ public class Controller implements EventHandler<ActionEvent> {
         customer.setEmail(emailTextField.getText());
         customer.setTelephoneNumber(telephoneTextField.getText());
 
-        spracuj(customer);
+        /*
+        car.setBrand(brandChoice.getValue().toString());
+        car.setType(typeChoice.getValue().toString());
+        car.setModel(modelChoice.getValue().toString());
+        car.setMotor(motorChoice.getValue().toString());
+        car.setColor(colorChoice.getValue().toString());
+        car.setDate(datePicker.getValue());
+        car.setDayCount(dayCount.getText());
+        */
+
+        spracuj(customer, car);
     }
 
     public void showValidateUI(ActionEvent event) throws Exception{

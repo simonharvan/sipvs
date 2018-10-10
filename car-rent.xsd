@@ -1,3 +1,22 @@
+<!DOCTYPE xs:schema [
+        <!ELEMENT xs:schema (xs:element)*>
+        <!ATTLIST xs:schema
+                attributeFormDefault CDATA #REQUIRED
+                elementFormDefault CDATA #REQUIRED
+                xmlns:xs CDATA #REQUIRED>
+        <!ELEMENT xs:element (xs:complexType)*>
+        <!ATTLIST xs:element
+                maxOccurs CDATA #IMPLIED
+                minOccurs CDATA #IMPLIED
+                name CDATA #REQUIRED
+                type CDATA #IMPLIED>
+        <!ELEMENT xs:complexType (xs:sequence|xs:attribute)*>
+        <!ELEMENT xs:sequence (xs:element)*>
+        <!ELEMENT xs:attribute (#PCDATA)>
+        <!ATTLIST xs:attribute
+                type CDATA #REQUIRED
+                name CDATA #REQUIRED>
+        ]>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="car-rent">
     <xs:complexType>
@@ -37,17 +56,19 @@
           </xs:complexType>
         </xs:element>
         <xs:element name="car">
-          <xs:complexType>
+          <xs:complexType mixed="true">
             <xs:sequence>
               <xs:element type="xs:string" name="brand"/>
               <xs:element type="xs:string" name="type"/>
-              <xs:element type="xs:short" name="year"/>
+              <xs:element type="xs:string" name="model"/>
+              <xs:element type="xs:string" name="engine"/>
               <xs:element type="xs:string" name="color"/>
-              <xs:element type="xs:string" name="license-plate"/>
+              <xs:element type="xs:short" name="year"/>
+              <xs:element type="xs:short" name="number_of_days"/>
+              <xs:element type="xs:float" name="price"/>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element type="xs:float" name="price"/>
       </xs:sequence>
       <xs:attribute type="xs:int" name="orderid"/>
     </xs:complexType>

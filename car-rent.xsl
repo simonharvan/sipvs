@@ -21,14 +21,18 @@
                 </p>
                 <p>Type: <xsl:value-of select="car-rent/car/type"/>
                 </p>
-                <p>Year: <xsl:value-of select="car-rent/car/year"/>
+                <p>Model: <xsl:value-of select="car-rent/car/model"/>
+                </p>
+                <p>Engine: <xsl:value-of select="car-rent/car/engine"/>
                 </p>
                 <p>Color: <xsl:value-of select="car-rent/car/color"/>
                 </p>
-                <p>License plate: <xsl:value-of select="car-rent/car/license-plate"/>
+                <p>Year: <xsl:value-of select="car-rent/car/year"/>
+                </p>
+                <p>Year: <xsl:value-of select="car-rent/car/number_of_days"/>
                 </p>
                 <h4>Price</h4>
-                <p><xsl:value-of select="car-rent/price"/> €</p>
+                <p><xsl:value-of select="car-rent/car/price"/> €</p>
                 <table border="1">
                     <tr bgcolor="#9acd32">
                         <th style="text-align:left">Name</th>
