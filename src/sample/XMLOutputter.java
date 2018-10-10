@@ -1,11 +1,12 @@
 package sample;
 
+import javafx.scene.effect.PerspectiveTransform;
 import org.jdom2.*;
 import org.jdom2.output.Format;
 
 public class XMLOutputter {
 
-    public static void spracuj(String nameTextfield){
+    public static void spracuj(Person customer){
 
         // create the jdom
         Document jdomDoc = new Document();
@@ -20,23 +21,23 @@ public class XMLOutputter {
             orderPerson.addContent(person);
 
                 Element name = new Element("name");
-                name.addContent(nameTextfield);
+                name.addContent(customer.getName());
                 person.addContent(name);
 
                 Element date = new Element("date-of-birth");
-                date.addContent("09-12-1993");
+                date.addContent("456");
                 person.addContent(date);
 
                 Element id = new Element("id");
-                id.addContent("EC123056");
+                id.addContent(customer.getEvidenceNumber());
                 person.addContent(id);
 
                 Element email = new Element("email");
-                email.addContent("john@smith.com");
+                email.addContent(customer.getEmail());
                 person.addContent(email);
 
                 Element phone = new Element("phone-number");
-                phone.addContent("+421911099339");
+                phone.addContent(customer.getTelephoneNumber());
                 person.addContent(phone);
 
         rootElement.addContent(orderPerson);
