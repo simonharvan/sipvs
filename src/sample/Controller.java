@@ -22,11 +22,11 @@ public class Controller implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
 
-        customer.setName(nameTextField.getText());
+        customer.setName(nameTextField.getText().replace("<(.*)>", ""));
         customer.setDateOfBirth(dateOfBirth.getValue());
-        customer.setEvidenceNumber(evidenceNumberTextField.getText());
-        customer.setEmail(emailTextField.getText());
-        customer.setTelephoneNumber(telephoneTextField.getText());
+        customer.setEvidenceNumber(evidenceNumberTextField.getText().replace("<(.*)>", ""));
+        customer.setEmail(emailTextField.getText().replace("<(.*)>", ""));
+        customer.setTelephoneNumber(telephoneTextField.getText().replace("<(.*)>", ""));
 
         /*
         car.setBrand(brandChoice.getValue().toString());

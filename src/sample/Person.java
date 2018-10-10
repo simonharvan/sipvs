@@ -23,7 +23,7 @@ public class Person {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.replace("<(.*)>", "");
     }
 
     public LocalDate getDateOfBirth() {
@@ -39,7 +39,7 @@ public class Person {
     }
 
     public void setEvidenceNumber(String evidenceNumber) {
-        this.evidenceNumber = evidenceNumber;
+        this.evidenceNumber = evidenceNumber.replace("<(.*)>", "");
     }
 
     public String getEmail() {
@@ -47,7 +47,7 @@ public class Person {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.replace("<(.*)>", "");
     }
 
     public String getTelephoneNumber() {
@@ -55,7 +55,7 @@ public class Person {
     }
 
     public void setTelephoneNumber(String telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
+        this.telephoneNumber = telephoneNumber.replace("<(.*)>", "");
     }
 
 }

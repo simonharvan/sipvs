@@ -16,7 +16,7 @@ public class Car {
     }
 
     public void setBrand(String brand) {
-        this.brand = brand;
+        this.brand = brand.replace("<(.*)>", "");
     }
 
     public String getType() {
@@ -24,7 +24,7 @@ public class Car {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type.replace("<(.*)>", "");
     }
 
     public String getModel() {
@@ -32,7 +32,7 @@ public class Car {
     }
 
     public void setModel(String model) {
-        this.model = model;
+        this.model = model.replace("<(.*)>", "");
     }
 
     public String getMotor() {
@@ -40,7 +40,7 @@ public class Car {
     }
 
     public void setMotor(String motor) {
-        this.motor = motor;
+        this.motor = motor.replace("<(.*)>", "");
     }
 
     public String getColor() {
@@ -48,7 +48,7 @@ public class Car {
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.color = color.replace("<(.*)>", "");
     }
 
     public LocalDate getDate() {
@@ -64,17 +64,17 @@ public class Car {
     }
 
     public void setDayCount(String dayCount) {
-        this.dayCount = dayCount;
+        this.dayCount = dayCount.replace("<(.*)>", "");
     }
 
     public Car(String brand, String type, String model, String motor, String color,
                LocalDate date, String dayCount){
-        this.brand = brand;
-        this.type = type;
-        this.model = model;
-        this.motor = motor;
-        this.color = color;
+        this.brand = brand.replace("<(.*)>", "");
+        this.type = type.replace("<(.*)>", "");
+        this.model = model.replace("<(.*)>", "");
+        this.motor = motor.replace("<(.*)>", "");
+        this.color = color.replace("<(.*)>", "");
         this.date = date;
-        this.dayCount = dayCount;
+        this.dayCount = dayCount.replace("<(.*)>", "");
     }
 }
