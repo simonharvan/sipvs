@@ -31,12 +31,12 @@ public class XMLValidator {
             Schema schema = schemaFactory.newSchema(xsd);
             Validator validator = schema.newValidator();
             validator.validate(xmlFile);
-            return xmlFile.getSystemId() + " is valid";
+            return "is valid";
         } catch (SAXException e) {
-            return xmlFile.getSystemId() + " is NOT valid reason:" + e;
+            return " is NOT valid reason:" + e;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return xmlFile.getSystemId() + " is NOT valid";
+        return "is NOT valid";
     }
 }
