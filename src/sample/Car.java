@@ -8,8 +8,28 @@ public class Car {
     String brand, type, model, motor, color;
     LocalDate date;
     String dayCount;
+    int pricePerDay;
 
     public Car(){}
+
+    public Car(String brand, String type, String model, String motor, String color,
+               LocalDate date, String dayCount, int pricePerDay){
+        this.brand = brand;
+        this.type = type;
+        this.model = model;
+        this.motor = motor;
+        this.color = color;
+        this.date = date;
+        this.dayCount = dayCount;
+    }
+
+    public int getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public void setPricePerDay(int pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
 
     public String getBrand() {
         return brand;
@@ -64,17 +84,6 @@ public class Car {
     }
 
     public void setDayCount(String dayCount) {
-        this.dayCount = dayCount;
-    }
-
-    public Car(String brand, String type, String model, String motor, String color,
-               LocalDate date, String dayCount){
-        this.brand = brand;
-        this.type = type;
-        this.model = model;
-        this.motor = motor;
-        this.color = color;
-        this.date = date;
         this.dayCount = dayCount;
     }
 }

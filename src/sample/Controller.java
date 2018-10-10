@@ -1,6 +1,7 @@
 package sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.util.Date;
@@ -15,6 +16,8 @@ public class Controller implements EventHandler<ActionEvent> {
     public ChoiceBox brandChoice, typeChoice, modelChoice, motorChoice, colorChoice;
     public DatePicker datePicker;
     public TextField dayCount;
+
+    public Label priceInfo;
 
     Car car = new Car();
     Person customer = new Person();
@@ -38,6 +41,7 @@ public class Controller implements EventHandler<ActionEvent> {
         car.setDayCount(dayCount.getText());
         */
 
-        spracuj(customer);
+        spracuj(customer, car);
     }
+
 }
