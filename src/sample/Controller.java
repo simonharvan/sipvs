@@ -1,9 +1,7 @@
 package sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.Date;
 
@@ -12,10 +10,11 @@ import static sample.XMLOutputter.spracuj;
 public class Controller implements EventHandler<ActionEvent> {
 
     public TextField nameTextField, evidenceNumberTextField, emailTextField, telephoneTextField;
-    public Date dateTextField;
-    Button nameButton = new Button();
-    TextArea ta = new TextArea();
-    String name = "";
+    public DatePicker dateOfBirth;
+
+    public ChoiceBox brandChoice, typeChoice, modelChoice, motorChoice, colorChoice;
+    public DatePicker datePicker;
+    public TextField dayCount;
 
     Car car = new Car();
     Person customer = new Person();
@@ -23,17 +22,21 @@ public class Controller implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
 
-        // TAKTO VIEME VYTIAHNUT TEXT Z TEXTFIELDU, TOTO POTREBUJEME DOSTAT
-        // DO TRIEDY XMLOutputter A Z TYCHTO DAT SPRAVIT XML
-
-        name=nameTextField.getText();
-
         customer.setName(nameTextField.getText());
-        customer.setDateOfBirth(dateTextField);
-        System.out.println(customer.getDateOfBirth());
+        customer.setDateOfBirth(dateOfBirth.getValue());
         customer.setEvidenceNumber(evidenceNumberTextField.getText());
         customer.setEmail(emailTextField.getText());
         customer.setTelephoneNumber(telephoneTextField.getText());
+
+        /*
+        car.setBrand(brandChoice.getValue().toString());
+        car.setType(typeChoice.getValue().toString());
+        car.setModel(modelChoice.getValue().toString());
+        car.setMotor(motorChoice.getValue().toString());
+        car.setColor(colorChoice.getValue().toString());
+        car.setDate(datePicker.getValue());
+        car.setDayCount(dayCount.getText());
+        */
 
         spracuj(customer);
     }
