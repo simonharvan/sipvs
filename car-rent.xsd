@@ -4,30 +4,32 @@
       <xs:sequence>
         <xs:element name="orderperson">
           <xs:complexType>
-            <xs:element name="person">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element type="xs:string" name="name"/>
-                  <xs:element type="xs:string" name="date-of-birth"/>
-                  <xs:element type="xs:string" name="id"/>
-                  <xs:element type="xs:string" name="email"/>
-                  <xs:element type="xs:string" name="phone-number"/>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="passengers">
-          <xs:complexType>
             <xs:sequence>
-              <xs:element name="person" maxOccurs="4" minOccurs="0">
+              <xs:element name="person">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element type="xs:string" name="name"/>
                     <xs:element type="xs:string" name="date-of-birth"/>
                     <xs:element type="xs:string" name="id"/>
                     <xs:element type="xs:string" name="email"/>
-                    <xs:element type="xs:string" name="phone-number"/>
+                    <xs:element type="xs:long" name="phone-number"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="passengers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="person" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:string" name="date-of-birth"/>
+                    <xs:element type="xs:string" name="id"/>
+                    <xs:element type="xs:string" name="email"/>
+                    <xs:element type="xs:long" name="phone-number"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -36,11 +38,13 @@
         </xs:element>
         <xs:element name="car">
           <xs:complexType>
-            <xs:element type="xs:string" name="brand"/>
-            <xs:element type="xs:string" name="type"/>
-            <xs:element type="xs:short" name="year"/>
-            <xs:element type="xs:string" name="color"/>
-            <xs:element type="xs:string" name="license-plate"/>
+            <xs:sequence>
+              <xs:element type="xs:string" name="brand"/>
+              <xs:element type="xs:string" name="type"/>
+              <xs:element type="xs:short" name="year"/>
+              <xs:element type="xs:string" name="color"/>
+              <xs:element type="xs:string" name="license-plate"/>
+            </xs:sequence>
           </xs:complexType>
         </xs:element>
         <xs:element type="xs:float" name="price"/>
