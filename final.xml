@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<car-rent>
+  <orderperson>
+    <person>
+      <name>sdfsd</name>
+      <date-of-birth>2018-10-10</date-of-birth>
+      <id>sdf</id>
+      <email>sdf</email>
+      <phone-number>sdfsd</phone-number>
+    </person>
+  </orderperson>
+  <car>
+    <brand>skoda</brand>
+    <type>hatchback</type>
+    <model>octavia</model>
+    <engine>1.9 tdi</engine>
+    <color>grey</color>
+    <number-of-days>5</number-of-days>
+    <price>15</price>
+  </car>
+</car-rent>

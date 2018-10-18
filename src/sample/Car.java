@@ -8,15 +8,35 @@ public class Car {
     String brand, type, model, motor, color;
     LocalDate date;
     String dayCount;
+    int pricePerDay;
 
     public Car(){}
+
+    public Car(String brand, String type, String model, String motor, String color,
+               LocalDate date, String dayCount, int pricePerDay){
+        this.brand = brand;
+        this.type = type;
+        this.model = model;
+        this.motor = motor;
+        this.color = color;
+        this.date = date;
+        this.dayCount = dayCount;
+    }
+
+    public int getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public void setPricePerDay(int pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
 
     public String getBrand() {
         return brand;
     }
 
     public void setBrand(String brand) {
-        this.brand = brand.replace("<(.*)>", "");
+        this.brand = brand;
     }
 
     public String getType() {
@@ -24,7 +44,7 @@ public class Car {
     }
 
     public void setType(String type) {
-        this.type = type.replace("<(.*)>", "");
+        this.type = type;
     }
 
     public String getModel() {
@@ -32,7 +52,8 @@ public class Car {
     }
 
     public void setModel(String model) {
-        this.model = model.replace("<(.*)>", "");
+
+        this.model = model;
     }
 
     public String getMotor() {
@@ -40,7 +61,7 @@ public class Car {
     }
 
     public void setMotor(String motor) {
-        this.motor = motor.replace("<(.*)>", "");
+        this.motor = motor;
     }
 
     public String getColor() {
@@ -48,7 +69,7 @@ public class Car {
     }
 
     public void setColor(String color) {
-        this.color = color.replace("<(.*)>", "");
+        this.color = color;
     }
 
     public LocalDate getDate() {
@@ -64,17 +85,17 @@ public class Car {
     }
 
     public void setDayCount(String dayCount) {
-        this.dayCount = dayCount.replace("<(.*)>", "");
+        this.dayCount = dayCount;
     }
 
     public Car(String brand, String type, String model, String motor, String color,
                LocalDate date, String dayCount){
-        this.brand = brand.replace("<(.*)>", "");
-        this.type = type.replace("<(.*)>", "");
-        this.model = model.replace("<(.*)>", "");
-        this.motor = motor.replace("<(.*)>", "");
-        this.color = color.replace("<(.*)>", "");
+        this.brand = brand;
+        this.type = type;
+        this.model = model;
+        this.motor = motor;
+        this.color = color;
         this.date = date;
-        this.dayCount = dayCount.replace("<(.*)>", "");
+        this.dayCount = dayCount;
     }
 }
