@@ -30,7 +30,8 @@ public class XMLOutputter {
                 person.addContent(name);
 
                 Element date = new Element("date-of-birth");
-                date.addContent(customer.getDateOfBirth().toString());
+                //date.addContent(customer.getDateOfBirth().toString());
+                date.addContent("10-10-2018");
                 person.addContent(date);
 
                 Element id = new Element("id");
@@ -51,33 +52,32 @@ public class XMLOutputter {
         Element car = new Element("car");
 
             Element brand = new Element("brand");
-            brand.addContent("skoda");
-            //brand.addContent(customerCar.getBrand());
+            brand.addContent(customerCar.getBrand());
             car.addContent(brand);
 
             Element type = new Element("type");
-            type.addContent("hatchback");
-            //brand.addContent(customerCar.getType());
+            type.addContent(customerCar.getType());
             car.addContent(type);
 
             Element model = new Element("model");
-            model.addContent("octavia");
-            //brand.addContent(customerCar.getModel());
+            model.addContent(customerCar.getModel());
             car.addContent(model);
 
             Element engine = new Element("engine");
-            engine.addContent("1.9 tdi");
-            //brand.addContent(customerCar.getMotor());
+            engine.addContent(customerCar.getMotor());
             car.addContent(engine);
 
             Element color = new Element("color");
-            color.addContent("grey");
-            //brand.addContent(customerCar.getColor());
+            color.addContent(customerCar.getColor());
             car.addContent(color);
 
+
+            Element dateRent = new Element("date");
+            dateRent.addContent("3-10-2018");
+            car.addContent(dateRent);
+
             Element numberOfDays = new Element("number-of-days");
-            numberOfDays.addContent("5");
-            //brand.addContent(customerCar.getDayCount());
+            numberOfDays.addContent(customerCar.getDayCount());
             car.addContent(numberOfDays);
 
             Element price = new Element("price");
@@ -85,8 +85,6 @@ public class XMLOutputter {
             car.addContent(price);
 
         rootElement.addContent(car);
-
-
 
 
         /*
@@ -130,7 +128,7 @@ public class XMLOutputter {
         xml.setFormat(Format.getPrettyFormat());
         System.out.println(xml.outputString(jdomDoc));
 
-        xml.output(jdomDoc, new FileWriter("/Users/tadeasbronis/Downloads/final.xml"));
+        xml.output(jdomDoc, new FileWriter("final.xml"));
 
         System.out.println("File Saved!");
     } catch (IOException io) {

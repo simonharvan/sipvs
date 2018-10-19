@@ -21,6 +21,7 @@ public class Car {
         this.color = color;
         this.date = date;
         this.dayCount = dayCount;
+        this.pricePerDay = pricePerDay;
     }
 
     public int getPricePerDay() {
@@ -85,17 +86,6 @@ public class Car {
     }
 
     public void setDayCount(String dayCount) {
-        this.dayCount = dayCount;
-    }
-
-    public Car(String brand, String type, String model, String motor, String color,
-               LocalDate date, String dayCount){
-        this.brand = brand;
-        this.type = type;
-        this.model = model;
-        this.motor = motor;
-        this.color = color;
-        this.date = date;
         this.dayCount = dayCount;
     }
 }

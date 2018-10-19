@@ -2,20 +2,21 @@
 <car-rent>
   <orderperson>
     <person>
-      <name>sdfsd</name>
-      <date-of-birth>2018-10-10</date-of-birth>
-      <id>sdf</id>
-      <email>sdf</email>
-      <phone-number>sdfsd</phone-number>
+      <name>Simon</name>
+      <date-of-birth>10-10-2018</date-of-birth>
+      <id>adsa123312</id>
+      <email>harvan</email>
+      <phone-number>0900123456</phone-number>
     </person>
   </orderperson>
   <car>
-    <brand>skoda</brand>
-    <type>hatchback</type>
-    <model>octavia</model>
-    <engine>1.9 tdi</engine>
-    <color>grey</color>
-    <number-of-days>5</number-of-days>
+    <brand>Škoda</brand>
+    <type>kombi</type>
+    <model>Octavia</model>
+    <engine>1.6 TDI 83 kW</engine>
+    <color>červená</color>
+    <date>3-10-2018</date>
+    <number-of-days>12</number-of-days>
     <price>15</price>
   </car>
 </car-rent>
