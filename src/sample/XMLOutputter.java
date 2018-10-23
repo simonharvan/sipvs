@@ -6,50 +6,51 @@ import org.jdom2.output.Format;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class XMLOutputter {
 
-    public static void spracuj(Person customer, Car customerCar){
+    public static void spracuj(Person customer, Car customerCar, ArrayList<Person> passengersArrayList){
 
         try {
 
-        // create the jdom
-        Document jdomDoc = new Document();
-        // create root element
-        Element rootElement = new Element("car-rent");
-        jdomDoc.setRootElement(rootElement);
+            // create the jdom
+            Document jdomDoc = new Document();
+            // create root element
+            Element rootElement = new Element("car-rent");
+            jdomDoc.setRootElement(rootElement);
 
-        // add child
-        Element orderPerson = new Element("orderperson");
+            // add child
+            Element orderPerson = new Element("orderperson");
 
             Element person = new Element("person");
             orderPerson.addContent(person);
 
-                Element name = new Element("name");
-                name.addContent(customer.getName());
-                person.addContent(name);
+            Element name = new Element("name");
+            name.addContent(customer.getName());
+            person.addContent(name);
 
-                Element date = new Element("date-of-birth");
-                //date.addContent(customer.getDateOfBirth().toString());
-                date.addContent("10-10-2018");
-                person.addContent(date);
+            Element date = new Element("date-of-birth");
+            //date.addContent(customer.getDateOfBirth().toString());
+            date.addContent("10-10-2018");
+            person.addContent(date);
 
-                Element id = new Element("id");
-                id.addContent(customer.getEvidenceNumber());
-                person.addContent(id);
+            Element id = new Element("id");
+            id.addContent(customer.getEvidenceNumber());
+            person.addContent(id);
 
-                Element email = new Element("email");
-                email.addContent(customer.getEmail());
-                person.addContent(email);
+            Element email = new Element("email");
+            email.addContent(customer.getEmail());
+            person.addContent(email);
 
-                Element phone = new Element("phone-number");
-                phone.addContent(customer.getTelephoneNumber());
-                person.addContent(phone);
+            Element phone = new Element("phone-number");
+            phone.addContent(customer.getTelephoneNumber());
+            person.addContent(phone);
 
-        rootElement.addContent(orderPerson);
+            rootElement.addContent(orderPerson);
 
 
-        Element car = new Element("car");
+            Element car = new Element("car");
 
             Element brand = new Element("brand");
             brand.addContent(customerCar.getBrand());
@@ -84,17 +85,24 @@ public class XMLOutputter {
             price.addContent("15");
             car.addContent(price);
 
-        rootElement.addContent(car);
+            rootElement.addContent(car);
+
+            //for (Person passenger : passengersArrayList){
+
+            //    Element passPerson = new Element("person");
 
 
-        /*
-        Element passengers = new Element("passengers");
+            //}
 
-            Element passPerson = new Element("person");
-            passengers.addContent(passPerson);
+
+            Element passengers = new Element("passengers");
+            for (Person passenger : passengersArrayList){
+
+                Element passPerson = new Element("person");
+                passengers.addContent(passPerson);
 
                 Element passName = new Element("name");
-                passName.addContent("John Smith");
+                passName.addContent(passenger.getName());
                 passPerson.addContent(passName);
 
                 Element passDate = new Element("date-of-birth");
@@ -102,20 +110,21 @@ public class XMLOutputter {
                 passPerson.addContent(passDate);
 
                 Element passId = new Element("id");
-                passId.addContent("EC123056");
+                passId.addContent(passenger.getEvidenceNumber());
                 passPerson.addContent(passId);
 
                 Element passEmail = new Element("email");
-                passEmail.addContent("john@smith.com");
+                passEmail.addContent(passenger.getEmail());
                 passPerson.addContent(passEmail);
 
                 Element passPhone = new Element("phone-number");
-                passPhone.addContent("+421911099339");
+                passPhone.addContent(passenger.getTelephoneNumber());
                 passPerson.addContent(passPhone);
+            }
 
         rootElement.addContent(passengers);
 
-        */
+
 
         // add attributes
         //Attribute nameAttr = new Attribute("name", "John Smith");
