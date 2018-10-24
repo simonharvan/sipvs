@@ -59,9 +59,9 @@
          <center>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="472.0" prefWidth="712.0">
+                <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="464.0" prefWidth="712.0">
                      <children>
-                        <GridPane fx:id="gridPane" alignment="CENTER" prefHeight="429.0" prefWidth="713.0">
+                        <GridPane fx:id="gridPane" alignment="CENTER" prefHeight="455.0" prefWidth="713.0">
                           <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -78,6 +78,7 @@
                             <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="187.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="187.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="176.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="176.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
@@ -187,7 +188,7 @@
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                  </padding>
                               </DatePicker>
-                              <Button fx:id="addPassengerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addPassenger" text="Pridaj pasažiera" textAlignment="CENTER" GridPane.rowIndex="9" />
+                              <Button fx:id="addPassengerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addPassenger" text="Pridaj pasažiera" textAlignment="CENTER" GridPane.rowIndex="10" />
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
