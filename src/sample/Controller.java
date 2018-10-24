@@ -1,4 +1,5 @@
 package sample;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -32,12 +33,12 @@ import static sample.XMLValidator.validate;
 
 public class Controller implements Initializable, EventHandler<ActionEvent> {
 
-    public TextField nameTextField,  evidenceNumberTextField, dayCount, emailTextField, telephoneTextField, xmlTextField, xsdTextField;
+    public TextField nameTextField, evidenceNumberTextField, dayCount, emailTextField, telephoneTextField, xmlTextField, xsdTextField;
     public TextField[] passengernameTextField = new TextField[4], passengerevidenceNumberTextField = new TextField[4], passengeremailTextField = new TextField[4], passengertelephoneTextField = new TextField[4];
     public DatePicker dateTextField;
     public DatePicker passengerDatePicker[] = new DatePicker[4];
     public Label label;
-    public ChoiceBox brandChoice, typeChoice,modelChoice,motorChoice,colorChoice;
+    public ChoiceBox brandChoice, typeChoice, modelChoice, motorChoice, colorChoice;
     public GridPane gridPane;
     public AnchorPane anchorPane;
     public Button addPassengerButton = new Button();
@@ -81,7 +82,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
 
-        if(!validateForm()){
+        if (!validateForm()) {
             return;
         }
 
@@ -99,7 +100,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         //car.setDate(datePicker.getValue());
         car.setDayCount(dayCount.getText());
 
-        for (int i = 0; i < passengersCounter; i++){
+        for (int i = 0; i < passengersCounter; i++) {
             passengers.add(new Person());
 
             passengers.get(i).setName(passengernameTextField[i].getText());
@@ -111,7 +112,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         spracuj(customer, car, passengers);
     }
 
-    public void showValidateUI(ActionEvent event) throws Exception{
+    public void showValidateUI(ActionEvent event) throws Exception {
 
         Stage primaryStage = new Stage();
 
@@ -128,61 +129,61 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         String xml = xmlTextField.getText();
         String xsd = xsdTextField.getText();
 
-        label.setText(validate(xml,xsd));
+        label.setText(validate(xml, xsd));
 
-        System.out.println(validate(xml,xsd));
+        System.out.println(validate(xml, xsd));
 
     }
 
 
-    public boolean validateForm(){
+    public boolean validateForm() {
 
-        if (nameTextField.getText().trim().isEmpty()){
+        if (nameTextField.getText().trim().isEmpty()) {
             nameTextField.setStyle("-fx-background-color: #f44141");
             return false;
         }
 
-        if (emailTextField.getText().trim().isEmpty()){
+        if (emailTextField.getText().trim().isEmpty()) {
             emailTextField.setStyle("-fx-background-color: #f44141");
             return false;
         }
 
-        if (evidenceNumberTextField.getText().trim().isEmpty()){
+        if (evidenceNumberTextField.getText().trim().isEmpty()) {
             evidenceNumberTextField.setStyle("-fx-background-color: #f44141");
             return false;
         }
 
-        if (telephoneTextField.getText().trim().isEmpty()){
+        if (telephoneTextField.getText().trim().isEmpty()) {
             telephoneTextField.setStyle("-fx-background-color: #f44141");
             return false;
         }
 
-        if (brandChoice.getSelectionModel().isEmpty()){
+        if (brandChoice.getSelectionModel().isEmpty()) {
             brandChoice.setStyle("-fx-background-color: #f44141");
             return false;
         }
 
-        if (typeChoice.getSelectionModel().isEmpty()){
+        if (typeChoice.getSelectionModel().isEmpty()) {
             typeChoice.setStyle("-fx-background-color: #f44141");
             return false;
         }
 
-        if (modelChoice.getSelectionModel().isEmpty()){
+        if (modelChoice.getSelectionModel().isEmpty()) {
             modelChoice.setStyle("-fx-background-color: #f44141");
             return false;
         }
 
-        if (motorChoice.getSelectionModel().isEmpty()){
+        if (motorChoice.getSelectionModel().isEmpty()) {
             motorChoice.setStyle("-fx-background-color: #f44141");
             return false;
         }
 
-        if (colorChoice.getSelectionModel().isEmpty()){
+        if (colorChoice.getSelectionModel().isEmpty()) {
             colorChoice.setStyle("-fx-background-color: #f44141");
             return false;
         }
 
-        if (dayCount.getText().trim().isEmpty()){
+        if (dayCount.getText().trim().isEmpty()) {
             dayCount.setStyle("-fx-background-color: #f44141");
             return false;
         }
@@ -191,7 +192,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         return true;
     }
 
-    public void addPassenger(){
+    public void addPassenger() {
 
         anchorPane.setPrefHeight(anchorPane.getHeight() + 70);
 
@@ -201,7 +202,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         passengeremailTextField[passengersCounter] = new TextField();
         passengertelephoneTextField[passengersCounter] = new TextField();
 
-        gridPane.add(new Label( (passengersCounter+1) + ". Pasažier"), 0, rowCounter++);
+        gridPane.add(new Label((passengersCounter + 1) + ". Pasažier"), 0, rowCounter++);
 
         gridPane.add(new Label("Meno a priezvisko"), 0, rowCounter);
         gridPane.add(passengernameTextField[passengersCounter], 1, rowCounter);
@@ -217,7 +218,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         gridPane.add(passengerevidenceNumberTextField[passengersCounter], 1, rowCounter++);
 
 
-        if(++passengersCounter > 3) {
+        if (++passengersCounter > 3) {
             addPassengerButton.setDisable(true);
         }
     }
@@ -260,21 +261,25 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
 
         rc = dSigner.sign("CAR_RENT_FIIT_STUBA",
                 "http://www.w3.org/2001/04/xmlenc#sha256",
-                "urn:oid:1.3.158.36061701.1.2.2", xadesSig -> System.out.println("XadesSig.sign20() close=" + xadesSig.getErrorMessage()));
+                "urn:oid:1.3.158.36061701.1.2.2", xadesSig -> {
+                    if (xadesSig.getErrorMessage() != null) {
+                        System.out.println("XadesSig.sign20() close=" + xadesSig.getErrorMessage());
+                    }else {
+                        try {
+                            Utils.saveFile("signed-final.xml", xadesSig.getSignedXmlWithEnvelope());
+                        } catch (IOException e) {
+                            System.out.println("XadesSig.sign() problem saving signed file");
+                            System.out.println("XadesSig.sing() : " + xadesSig.getSignedXmlWithEnvelope());
+                            e.printStackTrace();
+                        }
+                    }
+                });
         if (rc != 0) {
-            System.out.println("XadesSig.sign20() errorCode=" + rc + ", errorMessage=" + dSigner.getErrorMessage());
+            System.out.println("XadesSig.sign() errorCode=" + rc + ", errorMessage=" + dSigner.getErrorMessage());
             return;
         }
 
 
-        try {
-            FileUtils.writeStringToFile(new File("signed-final.xml"), dSigner.getSignedXmlWithEnvelope(), "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        System.out.println(dSigner.getSignedXmlWithEnvelope());
     }
 
 }

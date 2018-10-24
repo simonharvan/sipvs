@@ -1,5 +1,7 @@
 package sample;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.*;
 
 public class Utils {
@@ -20,5 +22,9 @@ public class Utils {
             e.printStackTrace();
             throw new RuntimeException("Nepodarilo sa otvorit zdroj: " + path);
         }
+    }
+
+    public static void saveFile(String fileName, String data) throws IOException {
+        FileUtils.writeStringToFile(new File(fileName), data);
     }
 }
