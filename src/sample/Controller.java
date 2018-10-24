@@ -236,10 +236,14 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         XmlPlugin xmlPlugin = new XmlPlugin();
         DataObject xmlObject;
         try {
-            xmlObject = xmlPlugin.createObject("XML1", "XML", readResource("/Users/simonharvan/Documents/Development/Java/car-rent/final.xml"),
-                    readResource("/Users/simonharvan/Documents/Development/Java/car-rent/car-rent.xsd"),
-                    "car-rent.xsd", "http://www.w3.org/2001/XMLSchema",
-                    readResource("/Users/simonharvan/Documents/Development/Java/car-rent/car-rent.xsl"), "http://www.w3.org/1999/XSL/Transform");
+            xmlObject = xmlPlugin.createObject("XML",
+                    "XML",
+                    readResource("final.xml"),
+                    readResource("car-rent.xsd"),
+                    "car-rent",
+                    "http://www.w3.org/2001/XMLSchema",
+                    readResource("car-rent.xsl"),
+                    " http://www.w3.org/1999/XSL/Transform");
         } catch (IOException e) {
             e.printStackTrace();
             return;
