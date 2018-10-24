@@ -14,13 +14,22 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import sk.ditec.zep.dsigner.xades.XadesSig;
+import sk.ditec.zep.dsigner.xades.plugin.DataObject;
+import sk.ditec.zep.dsigner.xades.plugins.xmlplugin.XmlPlugin;
 
 import java.awt.*;
 import java.net.URL;
 import java.util.*;
 import java.util.ResourceBundle;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
+
+import static sample.Utils.readResource;
 import static sample.XMLOutputter.spracuj;
 import static sample.XMLValidator.validate;
 
@@ -128,6 +137,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
 
     }
 
+
     public boolean validateForm(){
 
         if (nameTextField.getText().trim().isEmpty()){
@@ -214,4 +224,50 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
             addPassengerButton.setDisable(true);
         }
     }
+
+    public void sign(ActionEvent actionEvent) {
+
+        final XadesSig dSigner = new XadesSig();
+        dSigner.installLookAndFeel();
+        dSigner.installSwingLocalization();
+        dSigner.reset();
+        //dSigner.setLanguage("sk");
+
+        XmlPlugin xmlPlugin = new XmlPlugin();
+        DataObject xmlObject;
+        try {
+            xmlObject = xmlPlugin.createObject("XML",
+                    "XML",
+                    readResource("final.xml"),
+                    readResource("car-rent.xsd"),
+                    "https://github.com/simonharvan/sipvs/blob/master/car-rent.xsd",
+                    "http://www.example.com/xml/sb",
+                    readResource("car-rent.xsl"),
+                    "http://www.example.com/xml/sb");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        if (xmlObject == null) {
+            System.out.println("XMLPlugin.createObject() errorMessage=" + xmlPlugin.getErrorMessage());
+            return;
+        }
+
+        int rc = dSigner.addObject(xmlObject);
+        if (rc != 0) {
+            System.out.println("XadesSig.addObject() errorCode=" + rc + ", errorMessage=" + dSigner.getErrorMessage());
+            return;
+        }
+
+        rc = dSigner.sign20("signatureId20", "http://www.w3.org/2001/04/xmlenc#sha256", "urn:oid:1.3.158.36061701.1.2.2", "dataEnvelopeId",
+                "dataEnvelopeURI", "dataEnvelopeDescr");
+        if (rc != 0) {
+            System.out.println("XadesSig.sign20() errorCode=" + rc + ", errorMessage=" + dSigner.getErrorMessage());
+            return;
+        }
+
+        System.out.println(dSigner.getSignedXmlWithEnvelope());
+    }
+
 }

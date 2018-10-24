@@ -47,6 +47,11 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                   </Button>
+                  <Button id="signButton" alignment="CENTER" onAction="#sign" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="85.0" prefWidth="140.0" text="Podpis" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </bottom>
