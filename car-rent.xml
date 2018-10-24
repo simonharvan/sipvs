@@ -3,33 +3,32 @@
 <car-rent orderid="889923"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="car-rent.xsd">
+    <orderid>10</orderid>
     <orderperson>
-        <person>
-            <name>John Smith</name>
-            <date-of-birth>09-12-1993</date-of-birth>
-            <id>EC123056</id>
-            <email>john@smith.com</email>
-            <phone-number>+421911099339</phone-number>
-        </person>
+        <name>John Smith</name>
+        <date-of-birth>1993-09-12</date-of-birth>
+        <id>EC123056</id>
+        <email>john@smith.com</email>
+        <phone-number>+421911099339</phone-number>
     </orderperson>
     <passengers>
         <person>
             <name>John Smith</name>
-            <date-of-birth>09-12-1993</date-of-birth>
+            <date-of-birth>1993-09-12</date-of-birth>
             <id>EC123056</id>
             <email>john@smith.com</email>
             <phone-number>+421911099339</phone-number>
         </person>
         <person>
             <name>John Smith</name>
-            <date-of-birth>09-12-1993</date-of-birth>
+            <date-of-birth>1993-09-12</date-of-birth>
             <id>EC123056</id>
             <email>john@smith.com</email>
             <phone-number>+421911099339</phone-number>
         </person>
         <person>
             <name>John Smith</name>
-            <date-of-birth>09-12-1993</date-of-birth>
+            <date-of-birth>1993-09-12</date-of-birth>
             <id>EC123056</id>
             <email>john@smith.com</email>
             <phone-number>+421911099339</phone-number>
@@ -37,8 +36,8 @@
     </passengers>
     <car>
         <brand>Skoda</brand>
-        <type>Octavia</type>
-        <model>hatchback</model>
+        <type>hatchback</type>
+        <model>Octavia</model>
         <engine>diesel</engine>
         <color>Gray</color>
         <year>2005</year>
