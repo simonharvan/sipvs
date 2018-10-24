@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -32,6 +33,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
     public Label label;
     public ChoiceBox brandChoice, typeChoice,modelChoice,motorChoice,colorChoice;
     public GridPane gridPane;
+    public AnchorPane anchorPane;
     public Button addPassengerButton = new Button();
 
     Button nameButton = new Button();
@@ -42,7 +44,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
     Car car = new Car();
     Person customer = new Person();
     ArrayList<Person> passengers = new ArrayList<Person>();
-    int rowCounter = 10;
+    int rowCounter = 12;
     int passengersCounter = 0;
 
     @Override
@@ -184,10 +186,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
 
     public void addPassenger(){
 
-        if(passengersCounter > 3) {
-            addPassengerButton.setDisable(true);
-            return;
-        }
+        anchorPane.setPrefHeight(anchorPane.getHeight() + 70);
 
         passengernameTextField[passengersCounter] = new TextField();
         passengerevidenceNumberTextField[passengersCounter] = new TextField();
@@ -208,8 +207,11 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         gridPane.add(passengertelephoneTextField[passengersCounter], 3, rowCounter++);
 
         gridPane.add(new Label("Číslo OP"), 0, rowCounter);
-        gridPane.add(passengerevidenceNumberTextField[passengersCounter], 1, rowCounter);
+        gridPane.add(passengerevidenceNumberTextField[passengersCounter], 1, rowCounter++);
 
-        passengersCounter++;
+
+        if(++passengersCounter > 3) {
+            addPassengerButton.setDisable(true);
+        }
     }
 }
