@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="car-rent.xsl"?>
 <car-rent orderid="889923"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNamespaceSchemaLocation="car-rent.xsd">
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="car-rent.xsd">
     <orderperson>
         <name>John Smith</name>
         <date-of-birth>1993-09-12</date-of-birth>
@@ -40,7 +39,7 @@
         <engine>diesel</engine>
         <color>Gray</color>
         <year>2005</year>
-        <number_of_days>10</number_of_days>
+        <number-of-days>10</number-of-days>
         <price>10.56</price>
     </car>
 </car-rent>

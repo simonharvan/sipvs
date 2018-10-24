@@ -14,19 +14,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.apache.commons.io.FileUtils;
 import sk.ditec.zep.dsigner.xades.XadesSig;
 import sk.ditec.zep.dsigner.xades.plugin.DataObject;
 import sk.ditec.zep.dsigner.xades.plugins.xmlplugin.XmlPlugin;
 
 import java.awt.*;
+import java.io.*;
 import java.net.URL;
 import java.util.*;
 import java.util.ResourceBundle;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 
 import static sample.Utils.readResource;
@@ -236,14 +233,15 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         XmlPlugin xmlPlugin = new XmlPlugin();
         DataObject xmlObject;
         try {
-            xmlObject = xmlPlugin.createObject("XML",
-                    "XML",
-                    readResource("final.xml"),
+            xmlObject = xmlPlugin.createObject2("car_rent",
+                    "Car rent",
+                    readResource("car-rent.xml"),
                     readResource("car-rent.xsd"),
-                    "https://github.com/simonharvan/sipvs/blob/master/car-rent.xsd",
-                    "http://www.example.com/xml/sb",
+                    "",
+                    "https://www.example.com/car-rent.xsd",
                     readResource("car-rent.xsl"),
-                    "http://www.example.com/xml/sb");
+                    "https://www.example.com/car-rent.xsl",
+                    "HTML");
         } catch (IOException e) {
             e.printStackTrace();
             return;
@@ -260,10 +258,19 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
             return;
         }
 
-        rc = dSigner.sign20("signatureId20", "http://www.w3.org/2001/04/xmlenc#sha256", "urn:oid:1.3.158.36061701.1.2.2", "dataEnvelopeId",
-                "dataEnvelopeURI", "dataEnvelopeDescr");
+        rc = dSigner.sign("CAR_RENT_FIIT_STUBA",
+                "http://www.w3.org/2001/04/xmlenc#sha256",
+                "urn:oid:1.3.158.36061701.1.2.2", xadesSig -> System.out.println("XadesSig.sign20() close=" + xadesSig.getErrorMessage()));
         if (rc != 0) {
             System.out.println("XadesSig.sign20() errorCode=" + rc + ", errorMessage=" + dSigner.getErrorMessage());
+            return;
+        }
+
+
+        try {
+            FileUtils.writeStringToFile(new File("signed-final.xml"), dSigner.getSignedXmlWithEnvelope(), "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
             return;
         }
 
