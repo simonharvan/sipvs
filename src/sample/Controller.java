@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +41,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
     public TextField[] passengernameTextField = new TextField[4], passengerevidenceNumberTextField = new TextField[4], passengeremailTextField = new TextField[4], passengertelephoneTextField = new TextField[4];
     public DatePicker dateOfBirth;
     public DatePicker passengerDatePicker[] = new DatePicker[4];
-    public Label label;
+    public Label label, priceInfo;
     public ChoiceBox brandChoice, typeChoice, modelChoice, motorChoice, colorChoice;
     public GridPane gridPane;
     public AnchorPane anchorPane;
@@ -61,16 +63,24 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
     public void initialize(URL location, ResourceBundle resources) {
         if (location.getFile().endsWith("sample.fxml")) {
             brandChoice.getItems().add("Škoda");
-            brandChoice.getItems().add("Volkswagen");
-            brandChoice.getItems().add("Renault");
+            brandChoice.getItems().add("VW");
+            brandChoice.getItems().add("Toyota");
+            brandChoice.getItems().add("Mercedes");
 
             typeChoice.getItems().add("hatchback");
             typeChoice.getItems().add("kombi");
             typeChoice.getItems().add("sedan");
 
             modelChoice.getItems().add("Octavia");
-            modelChoice.getItems().add("Scout");
+            modelChoice.getItems().add("Octavia Combi");
             modelChoice.getItems().add("Fabia");
+            modelChoice.getItems().add("Passat");
+            modelChoice.getItems().add("Golf");
+            modelChoice.getItems().add("Golf Combi");
+            modelChoice.getItems().add("Corolla");
+            modelChoice.getItems().add("Land Cruiser");
+            modelChoice.getItems().add("E-Classe");
+            modelChoice.getItems().add("A-Classe");
 
             motorChoice.getItems().add("1.2 TSI 53 kW");
             motorChoice.getItems().add("1.6 TDI 83 kW");
@@ -79,6 +89,18 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
             colorChoice.getItems().add("červená");
             colorChoice.getItems().add("zelená");
             colorChoice.getItems().add("modrá");
+
+            dayCount.textProperty().addListener(new ChangeListener<String>() {
+                @Override
+                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                    if (newValue.equals("")) {
+                        priceInfo.setText("0");
+                        return;
+                    }
+                    priceInfo.setText(String.valueOf(Integer.valueOf(dayCount.getText()) * 10));
+
+                }
+            });
         }
     }
 
@@ -102,6 +124,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         car.setColor(colorChoice.getValue().toString());
         car.setDate(datePicker.getValue());
         car.setDayCount(dayCount.getText());
+        car.setPrice(Integer.valueOf(priceInfo.getText()));
 
         for (int i = 0; i < passengersCounter; i++) {
             passengers.add(new Person());
@@ -254,7 +277,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         try {
             xmlObject = xmlPlugin.createObject2("car_rent",
                     "Car rent",
-                    readResource("car-rent.xml"),
+                    readResource("final.xml"),
                     readResource("car-rent.xsd"),
                     "",
                     "https://www.example.com/car-rent.xsd",

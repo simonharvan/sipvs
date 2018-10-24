@@ -113,7 +113,7 @@ public class XMLOutputter {
                 car.addContent(numberOfDays);
 
                 Element price = new Element("price");
-                price.addContent("15");
+                price.addContent(String.valueOf(customerCar.getPrice()));
                 car.addContent(price);
 
             rootElement.addContent(car);
