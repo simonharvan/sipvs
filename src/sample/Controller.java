@@ -240,10 +240,10 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
                     "XML",
                     readResource("final.xml"),
                     readResource("car-rent.xsd"),
-                    "car-rent",
-                    "http://www.w3.org/2001/XMLSchema",
+                    "https://github.com/simonharvan/sipvs/blob/master/car-rent.xsd",
+                    "http://www.example.com/xml/sb",
                     readResource("car-rent.xsl"),
-                    " http://www.w3.org/1999/XSL/Transform");
+                    "http://www.example.com/xml/sb");
         } catch (IOException e) {
             e.printStackTrace();
             return;

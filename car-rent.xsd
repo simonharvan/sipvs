@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           version="1.0">
+           version="1.0" targetNamespace="https://github.com/simonharvan/sipvs/blob/master/car-rent.xsd">
     <xs:simpleType name="brand" final="restriction">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Skoda"/>
