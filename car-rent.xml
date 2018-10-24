@@ -3,7 +3,6 @@
 <car-rent orderid="889923"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="car-rent.xsd">
-    <orderid>10</orderid>
     <orderperson>
         <name>John Smith</name>
         <date-of-birth>1993-09-12</date-of-birth>
