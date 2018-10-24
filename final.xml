@@ -4,19 +4,28 @@
     <person>
       <name>Simon</name>
       <date-of-birth>10-10-2018</date-of-birth>
-      <id>adsa123312</id>
-      <email>harvan</email>
-      <phone-number>0900123456</phone-number>
+      <id>ET360790</id>
+      <email>harvna.simon@gmail.com</email>
+      <phone-number>0917432788</phone-number>
     </person>
   </orderperson>
+  <passengers>
+    <person>
+      <name>Simon</name>
+      <date-of-birth>10-10-2018</date-of-birth>
+      <id>ET360790</id>
+      <email>harvna.simon@gmail.com</email>
+      <phone-number>0917432788</phone-number>
+    </person>
+  </passengers>
   <car>
     <brand>Škoda</brand>
     <type>kombi</type>
-    <model>Octavia</model>
+    <model>Scout</model>
     <engine>1.6 TDI 83 kW</engine>
-    <color>červená</color>
-    <date>3-10-2018</date>
-    <number-of-days>12</number-of-days>
+    <color>zelená</color>
+    <year>2015</year>
+    <number-of-days>10</number-of-days>
     <price>15</price>
   </car>
 </car-rent>

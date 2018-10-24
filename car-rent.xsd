@@ -1,66 +1,67 @@
 <?xml version="1.0"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
- <xs:simpleType name="brand" final="restriction" >
-    <xs:restriction base="xs:string">
-        <xs:enumeration value="Skoda" />
-        <xs:enumeration value="VW" />
-        <xs:enumeration value="Toyota" />
-        <xs:enumeration value="Mercedes" />
-    </xs:restriction>
-</xs:simpleType>
- 
- <xs:complexType name="person" final="restriction">
-   <xs:sequence>
-     <xs:element type="xs:string" name="name"/>
-     <xs:element type="xs:date" name="date-of-birth"/>
-     <xs:element type="xs:string" name="id"/>
-     <xs:element type="xs:string" name="email"/>
-     <xs:element type="xs:string" name="phone-number"/>
-   </xs:sequence>
- </xs:complexType>
- <xs:simpleType name="model" final="restriction" >
-    <xs:restriction base="xs:string">
-        <xs:enumeration value="Octavia" />
-        <xs:enumeration value="Octavia Combi" />
-        <xs:enumeration value="Fabia" />
-        <xs:enumeration value="Passat" />
-        <xs:enumeration value="Golf" />
-        <xs:enumeration value="Golf Combi" />
-        <xs:enumeration value="Corolla" />
-        <xs:enumeration value="Land Cruiser" />
-        <xs:enumeration value="E-Classe" />
-        <xs:enumeration value="A-Classe" />
-    </xs:restriction>
-</xs:simpleType>
-  <xs:element name="car-rent">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element type="xs:string" name="orderid"/>
-        <xs:element name="orderperson" type="person" />
-        <xs:element name="passengers">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="person" type="person" maxOccurs="4" minOccurs="0">
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="car">
-          <xs:complexType mixed="true">
-            <xs:sequence>
-              <xs:element type="brand" name="brand"/>
-              <xs:element type="xs:string" name="type"/>
-              <xs:element type="model" name="model"/>
-              <xs:element type="xs:string" name="engine"/>
-              <xs:element type="xs:string" name="color"/>
-              <xs:element type="xs:short" name="year"/>
-              <xs:element type="xs:short" name="number_of_days"/>
-              <xs:element type="xs:float" name="price"/>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-      </xs:sequence>
-      <xs:attribute type="xs:int" name="orderid"/>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           version="1.0">
+    <xs:simpleType name="brand" final="restriction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Skoda"/>
+            <xs:enumeration value="VW"/>
+            <xs:enumeration value="Toyota"/>
+            <xs:enumeration value="Mercedes"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="person" final="restriction">
+        <xs:sequence>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:date" name="date-of-birth"/>
+            <xs:element type="xs:string" name="id"/>
+            <xs:element type="xs:string" name="email"/>
+            <xs:element type="xs:string" name="phone-number"/>
+        </xs:sequence>
     </xs:complexType>
-  </xs:element>
+    <xs:simpleType name="model" final="restriction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Octavia"/>
+            <xs:enumeration value="Octavia Combi"/>
+            <xs:enumeration value="Fabia"/>
+            <xs:enumeration value="Passat"/>
+            <xs:enumeration value="Golf"/>
+            <xs:enumeration value="Golf Combi"/>
+            <xs:enumeration value="Corolla"/>
+            <xs:enumeration value="Land Cruiser"/>
+            <xs:enumeration value="E-Classe"/>
+            <xs:enumeration value="A-Classe"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="car-rent">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="orderid"/>
+                <xs:element name="orderperson" type="person"/>
+                <xs:element name="passengers">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="person" type="person" maxOccurs="4" minOccurs="0">
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="car">
+                    <xs:complexType mixed="true">
+                        <xs:sequence>
+                            <xs:element type="brand" name="brand"/>
+                            <xs:element type="xs:string" name="type"/>
+                            <xs:element type="model" name="model"/>
+                            <xs:element type="xs:string" name="engine"/>
+                            <xs:element type="xs:string" name="color"/>
+                            <xs:element type="xs:short" name="year"/>
+                            <xs:element type="xs:short" name="number-of-days"/>
+                            <xs:element type="xs:float" name="price"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:int" name="orderid"/>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
