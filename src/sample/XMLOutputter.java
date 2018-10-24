@@ -18,82 +18,38 @@ public class XMLOutputter {
             Document jdomDoc = new Document();
             // create root element
             Element rootElement = new Element("car-rent");
+            rootElement.setAttribute("orderid", String.valueOf(Math.round(Math.random()*100000)));
+            //rootElement.setAttribute("xmlns/:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+            //rootElement.setAttribute("xsi:noNamespaceSchemaLocation", "car-rent.xsd");
             jdomDoc.setRootElement(rootElement);
+
+
 
             // add child
             Element orderPerson = new Element("orderperson");
 
-            Element person = new Element("person");
-            orderPerson.addContent(person);
+                Element name = new Element("name");
+                name.addContent(customer.getName());
+                orderPerson.addContent(name);
 
-            Element name = new Element("name");
-            name.addContent(customer.getName());
-            person.addContent(name);
+                Element date = new Element("date-of-birth");
+                //date.addContent(customer.getDateOfBirth().toString());
+                date.addContent(customer.getDateOfBirth().toString());
+                orderPerson.addContent(date);
 
-            Element date = new Element("date-of-birth");
-            //date.addContent(customer.getDateOfBirth().toString());
-            date.addContent("10-10-2018");
-            person.addContent(date);
+                Element id = new Element("id");
+                id.addContent(customer.getEvidenceNumber());
+                orderPerson.addContent(id);
 
-            Element id = new Element("id");
-            id.addContent(customer.getEvidenceNumber());
-            person.addContent(id);
+                Element email = new Element("email");
+                email.addContent(customer.getEmail());
+                orderPerson.addContent(email);
 
-            Element email = new Element("email");
-            email.addContent(customer.getEmail());
-            person.addContent(email);
-
-            Element phone = new Element("phone-number");
-            phone.addContent(customer.getTelephoneNumber());
-            person.addContent(phone);
+                Element phone = new Element("phone-number");
+                phone.addContent(customer.getTelephoneNumber());
+                orderPerson.addContent(phone);
 
             rootElement.addContent(orderPerson);
-
-
-            Element car = new Element("car");
-
-            Element brand = new Element("brand");
-            brand.addContent(customerCar.getBrand());
-            car.addContent(brand);
-
-            Element type = new Element("type");
-            type.addContent(customerCar.getType());
-            car.addContent(type);
-
-            Element model = new Element("model");
-            model.addContent(customerCar.getModel());
-            car.addContent(model);
-
-            Element engine = new Element("engine");
-            engine.addContent(customerCar.getMotor());
-            car.addContent(engine);
-
-            Element color = new Element("color");
-            color.addContent(customerCar.getColor());
-            car.addContent(color);
-
-
-            Element dateRent = new Element("date");
-            dateRent.addContent("3-10-2018");
-            car.addContent(dateRent);
-
-            Element numberOfDays = new Element("number-of-days");
-            numberOfDays.addContent(customerCar.getDayCount());
-            car.addContent(numberOfDays);
-
-            Element price = new Element("price");
-            price.addContent("15");
-            car.addContent(price);
-
-            rootElement.addContent(car);
-
-            //for (Person passenger : passengersArrayList){
-
-            //    Element passPerson = new Element("person");
-
-
-            //}
-
 
             Element passengers = new Element("passengers");
             for (Person passenger : passengersArrayList){
@@ -101,28 +57,66 @@ public class XMLOutputter {
                 Element passPerson = new Element("person");
                 passengers.addContent(passPerson);
 
-                Element passName = new Element("name");
-                passName.addContent(passenger.getName());
-                passPerson.addContent(passName);
+                    Element passName = new Element("name");
+                    passName.addContent(passenger.getName());
+                    passPerson.addContent(passName);
 
-                Element passDate = new Element("date-of-birth");
-                passDate.addContent("09-12-1993");
-                passPerson.addContent(passDate);
+                    Element passDate = new Element("date-of-birth");
+                    passDate.addContent(passenger.getDateOfBirth().toString());
+                    passPerson.addContent(passDate);
 
-                Element passId = new Element("id");
-                passId.addContent(passenger.getEvidenceNumber());
-                passPerson.addContent(passId);
+                    Element passId = new Element("id");
+                    passId.addContent(passenger.getEvidenceNumber());
+                    passPerson.addContent(passId);
 
-                Element passEmail = new Element("email");
-                passEmail.addContent(passenger.getEmail());
-                passPerson.addContent(passEmail);
+                    Element passEmail = new Element("email");
+                    passEmail.addContent(passenger.getEmail());
+                    passPerson.addContent(passEmail);
 
-                Element passPhone = new Element("phone-number");
-                passPhone.addContent(passenger.getTelephoneNumber());
-                passPerson.addContent(passPhone);
+                    Element passPhone = new Element("phone-number");
+                    passPhone.addContent(passenger.getTelephoneNumber());
+                    passPerson.addContent(passPhone);
             }
 
-        rootElement.addContent(passengers);
+            rootElement.addContent(passengers);
+
+
+            Element car = new Element("car");
+
+                Element brand = new Element("brand");
+                brand.addContent(customerCar.getBrand());
+                car.addContent(brand);
+
+                Element type = new Element("type");
+                type.addContent(customerCar.getType());
+                car.addContent(type);
+
+                Element model = new Element("model");
+                model.addContent(customerCar.getModel());
+                car.addContent(model);
+
+                Element engine = new Element("engine");
+                engine.addContent(customerCar.getMotor());
+                car.addContent(engine);
+
+                Element color = new Element("color");
+                color.addContent(customerCar.getColor());
+                car.addContent(color);
+
+
+                Element dateRent = new Element("date");
+                dateRent.addContent(customerCar.getDate().toString());
+                car.addContent(dateRent);
+
+                Element numberOfDays = new Element("number-of-days");
+                numberOfDays.addContent(customerCar.getDayCount());
+                car.addContent(numberOfDays);
+
+                Element price = new Element("price");
+                price.addContent("15");
+                car.addContent(price);
+
+            rootElement.addContent(car);
 
 
 

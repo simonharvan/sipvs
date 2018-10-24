@@ -4,7 +4,7 @@
            version="1.0" >
     <xs:simpleType name="brand" final="restriction">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="Skoda"/>
+            <xs:enumeration value="Škoda"/>
             <xs:enumeration value="VW"/>
             <xs:enumeration value="Toyota"/>
             <xs:enumeration value="Mercedes"/>
@@ -38,7 +38,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="orderperson" type="person"/>
-                <xs:element name="passengers">
+                <xs:element name="passengers" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="person" type="person" maxOccurs="4" minOccurs="0">
@@ -54,7 +54,7 @@
                             <xs:element type="model" name="model"/>
                             <xs:element type="xs:string" name="engine"/>
                             <xs:element type="xs:string" name="color"/>
-                            <xs:element type="xs:short" name="year"/>
+                            <xs:element type="xs:date" name="date"/>
                             <xs:element type="xs:short" name="number-of-days"/>
                             <xs:element type="xs:float" name="price"/>
                         </xs:sequence>

@@ -35,7 +35,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
 
     public TextField nameTextField, evidenceNumberTextField, dayCount, emailTextField, telephoneTextField, xmlTextField, xsdTextField;
     public TextField[] passengernameTextField = new TextField[4], passengerevidenceNumberTextField = new TextField[4], passengeremailTextField = new TextField[4], passengertelephoneTextField = new TextField[4];
-    public DatePicker dateTextField;
+    public DatePicker dateOfBirth;
     public DatePicker passengerDatePicker[] = new DatePicker[4];
     public Label label;
     public ChoiceBox brandChoice, typeChoice, modelChoice, motorChoice, colorChoice;
@@ -87,7 +87,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         }
 
         customer.setName(nameTextField.getText());
-        //customer.setDateOfBirth(dateTextField.getValue());
+        customer.setDateOfBirth(dateOfBirth.getValue());
         customer.setEvidenceNumber(evidenceNumberTextField.getText());
         customer.setEmail(emailTextField.getText());
         customer.setTelephoneNumber(telephoneTextField.getText());
@@ -97,13 +97,14 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
         car.setModel(modelChoice.getValue().toString());
         car.setMotor(motorChoice.getValue().toString());
         car.setColor(colorChoice.getValue().toString());
-        //car.setDate(datePicker.getValue());
+        car.setDate(datePicker.getValue());
         car.setDayCount(dayCount.getText());
 
         for (int i = 0; i < passengersCounter; i++) {
             passengers.add(new Person());
 
             passengers.get(i).setName(passengernameTextField[i].getText());
+            passengers.get(i).setDateOfBirth(passengerDatePicker[i].getValue());
             passengers.get(i).setEmail(passengeremailTextField[i].getText());
             passengers.get(i).setEvidenceNumber(passengerevidenceNumberTextField[i].getText());
             passengers.get(i).setTelephoneNumber(passengertelephoneTextField[i].getText());
