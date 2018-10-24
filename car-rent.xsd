@@ -1,23 +1,27 @@
-<!DOCTYPE xs:schema [
-        <!ELEMENT xs:schema (xs:element)*>
-        <!ATTLIST xs:schema
-                attributeFormDefault CDATA #REQUIRED
-                elementFormDefault CDATA #REQUIRED
-                xmlns:xs CDATA #REQUIRED>
-        <!ELEMENT xs:element (xs:complexType)*>
-        <!ATTLIST xs:element
-                maxOccurs CDATA #IMPLIED
-                minOccurs CDATA #IMPLIED
-                name CDATA #REQUIRED
-                type CDATA #IMPLIED>
-        <!ELEMENT xs:complexType (xs:sequence|xs:attribute)*>
-        <!ELEMENT xs:sequence (xs:element)*>
-        <!ELEMENT xs:attribute (#PCDATA)>
-        <!ATTLIST xs:attribute
-                type CDATA #REQUIRED
-                name CDATA #REQUIRED>
-        ]>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+ <xs:simpleType name="brand" final="restriction" >
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="Skoda" />
+        <xs:enumeration value="VW" />
+        <xs:enumeration value="Toyota" />
+        <xs:enumeration value="Mercedes" />
+    </xs:restriction>
+</xs:simpleType>
+ <xs:simpleType name="model" final="restriction" >
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="Octavia" />
+        <xs:enumeration value="Octavia Combi" />
+        <xs:enumeration value="Fabia" />
+        <xs:enumeration value="Passat" />
+        <xs:enumeration value="Golf" />
+        <xs:enumeration value="Golf Combi" />
+        <xs:enumeration value="Corolla" />
+        <xs:enumeration value="Land Cruiser" />
+        <xs:enumeration value="E-Classe" />
+        <xs:enumeration value="A-Classe" />
+    </xs:restriction>
+</xs:simpleType>
   <xs:element name="car-rent">
     <xs:complexType>
       <xs:sequence>
@@ -28,10 +32,10 @@
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element type="xs:string" name="name"/>
-                    <xs:element type="xs:string" name="date-of-birth"/>
+                    <xs:element type="xs:date" name="date-of-birth"/>
                     <xs:element type="xs:string" name="id"/>
                     <xs:element type="xs:string" name="email"/>
-                    <xs:element type="xs:long" name="phone-number"/>
+                    <xs:element type="xs:string" name="phone-number"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -41,14 +45,14 @@
         <xs:element name="passengers">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="person" maxOccurs="unbounded" minOccurs="0">
+              <xs:element name="person" maxOccurs="4" minOccurs="0">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element type="xs:string" name="name"/>
-                    <xs:element type="xs:string" name="date-of-birth"/>
+                    <xs:element type="xs:date" name="date-of-birth"/>
                     <xs:element type="xs:string" name="id"/>
                     <xs:element type="xs:string" name="email"/>
-                    <xs:element type="xs:long" name="phone-number"/>
+                    <xs:element type="xs:string" name="phone-number"/>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -58,9 +62,9 @@
         <xs:element name="car">
           <xs:complexType mixed="true">
             <xs:sequence>
-              <xs:element type="xs:string" name="brand"/>
+              <xs:element type="brand" name="brand"/>
               <xs:element type="xs:string" name="type"/>
-              <xs:element type="xs:string" name="model"/>
+              <xs:element type="model" name="model"/>
               <xs:element type="xs:string" name="engine"/>
               <xs:element type="xs:string" name="color"/>
               <xs:element type="xs:short" name="year"/>
