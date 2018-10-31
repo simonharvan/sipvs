@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import sk.ditec.zep.dsigner.xades.XadesSig;
@@ -55,6 +57,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
     ArrayList<Person> passengers = new ArrayList<Person>();
     int rowCounter = 12;
     int passengersCounter = 0;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -146,6 +149,20 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
 
         primaryStage.show();
 
+    }
+
+    public void setXMLPath(){
+
+        FileChooser xml = new FileChooser();
+
+        xmlTextField.setText(xml.showOpenDialog(null).getAbsolutePath());
+    }
+
+    public void setXSDParh(){
+
+        FileChooser xml = new FileChooser();
+
+        xsdTextField.setText(xml.showOpenDialog(null).getAbsolutePath());
     }
 
     public void validuj(ActionEvent event) {

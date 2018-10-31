@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <BorderPane layoutX="14.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="368.0" prefWidth="565.0">
          <bottom>
-            <TextField BorderPane.alignment="CENTER" fx:id="xsdTextField">
+            <TextField onMouseClicked="#setXSDParh" BorderPane.alignment="CENTER" fx:id="xsdTextField">
                <BorderPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </BorderPane.margin></TextField>
          </bottom>
          <top>
-            <TextField BorderPane.alignment="CENTER" fx:id="xmlTextField">
+            <TextField onMouseClicked="#setXMLPath" prefHeight="27.0" prefWidth="423.0" BorderPane.alignment="CENTER" fx:id="xmlTextField">
                <BorderPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </BorderPane.margin></TextField>
