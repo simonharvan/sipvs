@@ -306,4 +306,7 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
 
     }
 
+    public void show(ActionEvent actionEvent) {
+        Utils.saveXMLtoHTML("final.xml", "final.html", "car-rent.xsl");
+    }
 }

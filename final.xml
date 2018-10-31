@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<car-rent orderid="9004">
+<?xml-stylesheet type="text/xsl" href="car-rent.xsl"?>
+<car-rent orderid="4367">
   <orderperson>
-    <name>10</name>
-    <date-of-birth>2018-10-25</date-of-birth>
-    <id>sdasda</id>
-    <email>adsads</email>
-    <phone-number>dsads</phone-number>
+    <name>Simon</name>
+    <date-of-birth>2015-10-15</date-of-birth>
+    <id>saddsa</id>
+    <email>harvan.simon@gmail.com</email>
+    <phone-number>sdajdas</phone-number>
   </orderperson>
-  <passengers />
+  <passengers>
+    <person>
+      <name>Matej</name>
+      <date-of-birth>2018-10-03</date-of-birth>
+      <id>dsa</id>
+      <email>matej@simon.com</email>
+      <phone-number>dsa</phone-number>
+    </person>
+  </passengers>
   <car>
     <brand>Škoda</brand>
-    <type>kombi</type>
-    <model>Octavia</model>
-    <engine>1.6 TDI 83 kW</engine>
+    <type>hatchback</type>
+    <model>Octavia Combi</model>
+    <engine>1.2 TSI 53 kW</engine>
     <color>červená</color>
-    <date>2018-10-17</date>
-    <number-of-days>12</number-of-days>
-    <price>120</price>
+    <date>2018-10-10</date>
+    <number-of-days>1</number-of-days>
+    <price>10</price>
   </car>
 </car-rent>
