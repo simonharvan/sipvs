@@ -3,6 +3,7 @@ package sample;
 import org.apache.commons.io.FileUtils;
 import org.apache.xml.security.utils.Base64;
 import org.bouncycastle.tsp.TimeStampResponse;
+import org.bouncycastle.tsp.TimeStampToken;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
@@ -48,7 +49,7 @@ public class Utils {
 
     }
 
-    public static String getTimeStamp(String message) {
+    public static TimeStampResponse getTimeStamp(String message) {
 
         String timeStampBase64 = null;
 
@@ -77,13 +78,16 @@ public class Utils {
                 result.append(line);
             }
 
-            return result.toString();
+            byte[] responseByteData = Base64.decode(result.toString().getBytes());
+
+
+            return new TimeStampResponse(responseByteData);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return timeStampBase64;
+        return null;
     }
 
     public static void saveFile(String fileName, String data) throws IOException {
@@ -125,6 +129,11 @@ public class Utils {
         }
     }
 
+    public static String getTimeStampTokenBase64(String message) throws IOException {
+        TimeStampResponse timeStampResponse = getTimeStamp(message);
+        return new String(Base64.encode(timeStampResponse.getTimeStampToken().getEncoded()));
+    }
+
     public static void appendTimeStampToFile(String signedFileName, String fileName) {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -157,8 +166,7 @@ public class Utils {
                 return;
             }
 
-
-            String timestamp = Utils.getTimeStamp(signatureValue.getTextContent());
+            String timestamp = Utils.getTimeStampTokenBase64(signatureValue.getTextContent());
 
             Text signatureNode = document.createTextNode(timestamp);
             encapsulatedTimeStamp.appendChild(signatureNode);
