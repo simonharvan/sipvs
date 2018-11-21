@@ -77,7 +77,7 @@ public class Utils {
                 result.append(line);
             }
 
-            return String.valueOf(Base64.decode(result.toString()));
+            return result.toString();
 
         } catch (Exception e) {
             e.printStackTrace();

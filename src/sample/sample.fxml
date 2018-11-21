@@ -57,7 +57,12 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button id="timeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#timeStamp" prefHeight="47.0" prefWidth="64.0" text="Cas" textAlignment="CENTER" />
+                  <Button id="timeButton" alignment="CENTER" contentDisplay="CENTER" onAction="#timeStamp" mnemonicParsing="false"  prefHeight="85.0" prefWidth="140.0" text="Časová pečiatka" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+
                </children>
             </HBox>
          </bottom>
