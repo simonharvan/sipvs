@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.verify.VerificationController">
+    <children>
+          <Pane prefHeight="400.0" prefWidth="600.0">
+              <children>
+                  <Button fx:id="setFilesButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#setXMLsPath" text="Vyber subory" />
+                  <Button layoutX="168.0" layoutY="14.0" mnemonicParsing="false" onAction="#verify" text="Validuj" />
+                  <TextArea fx:id="text" layoutX="19.0" layoutY="61.0" prefHeight="325.0" prefWidth="563.0" />
+              </children>
+          </Pane>
+    </children>
+</AnchorPane>

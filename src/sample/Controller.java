@@ -14,36 +14,19 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.apache.commons.io.FileUtils;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.Text;
-import org.xml.sax.InputSource;
 import sk.ditec.zep.dsigner.xades.XadesSig;
 import sk.ditec.zep.dsigner.xades.plugin.DataObject;
 import sk.ditec.zep.dsigner.xades.plugins.xmlplugin.XmlPlugin;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.awt.*;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
 import java.util.ResourceBundle;
 
 
-import static sample.Utils.appendTimeStampToFile;
 import static sample.Utils.readResource;
 import static sample.XMLOutputter.spracuj;
 import static sample.XMLValidator.validate;
@@ -342,5 +325,15 @@ public class Controller implements Initializable, EventHandler<ActionEvent> {
 
     public void timeStamp(ActionEvent actionEvent) {
         Utils.appendTimeStampToFile("signed-final.xml", "timestamp-final.xml");
+    }
+
+    public void verify(ActionEvent actionEvent) throws IOException {
+        Stage primaryStage = new Stage();
+
+        Parent root = FXMLLoader.load(getClass().getResource("verify/verify.fxml"));
+        primaryStage.setTitle("Overovanie");
+        primaryStage.setScene(new Scene(root, 800, 600));
+
+        primaryStage.show();
     }
 }
