@@ -31,9 +31,9 @@ public class SignatureElementVerificator implements Verificator {
             Node id = signature.getAttributes().getNamedItem("Id");
 
             if (id == null) {
-                callback.callback(false, "Koreňový element NEobsahuje atribúty Id podľa profilu XADES_ZEP.");
+                callback.callback(false, "Koreňový element NEobsahuje atribút Id podľa profilu XADES_ZEP.");
             } else if (ds == null){
-                callback.callback(false, "Koreňový element NEobsahuje atribúty xmlns:ds podľa profilu XADES_ZEP.");
+                callback.callback(false, "Koreňový element NEobsahuje atribút xmlns:ds podľa profilu XADES_ZEP.");
             }else {
                 callback.callback(true, "Koreňový element obsahuje atribúty xmlns:id a xmlns:ds podľa profilu XADES_ZEP.");
             }

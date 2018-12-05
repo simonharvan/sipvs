@@ -26,16 +26,13 @@ public class SignatureValueVerificator implements Verificator {
             ByteArrayInputStream source = new ByteArrayInputStream(Utils.readResource(fileToVerify.getAbsolutePath()).getBytes(StandardCharsets.UTF_8));
             Document document = docBuilder.parse(source);
 
-            Node envelope = document.getElementsByTagName("xzep:DataEnvelope").item(0);
-            Node ds = envelope.getAttributes().getNamedItem("xmlns:ds");
-            Node xzep = envelope.getAttributes().getNamedItem("xmlns:xzep");
+            Node signatureValue = document.getElementsByTagName("ds:SignatureValue").item(0);
+            Node id = signatureValue.getAttributes().getNamedItem("Id");
 
-            if (xzep == null) {
-                callback.callback(false, "Koreňový element NEobsahuje atribúty xmlns:xzep podľa profilu XADES_ZEP.");
-            } else if (ds == null){
-                callback.callback(false, "Koreňový element NEobsahuje atribúty xmlns:ds podľa profilu XADES_ZEP.");
+            if (id == null){
+                callback.callback(false, "Koreňový element NEobsahuje atribút Id podľa profilu XADES_ZEP.");
             }else {
-                callback.callback(true, "Koreňový element obsahuje atribúty xmlns:xzep a xmlns:ds podľa profilu XADES_ZEP.");
+                callback.callback(true, "Koreňový element obsahuje atribút Id podľa profilu XADES_ZEP.");
             }
         } catch (ParserConfigurationException | SAXException e) {
             callback.callback(false, e.getLocalizedMessage());
