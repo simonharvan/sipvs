@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-public class SignatureValueVerificator implements Verificator {
+public class SignatureValueElementVerificator implements Verificator {
 
     @Override
     public void verify(File fileToVerify, VerificatorCallback callback) {

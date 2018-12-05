@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-public class SignatureElementVerificator implements Verificator {
+public class SignedInfoElementVerificator implements Verificator {
 
     @Override
     public void verify(File fileToVerify, VerificatorCallback callback) {
@@ -26,22 +26,24 @@ public class SignatureElementVerificator implements Verificator {
             ByteArrayInputStream source = new ByteArrayInputStream(Utils.readResource(fileToVerify.getAbsolutePath()).getBytes(StandardCharsets.UTF_8));
             Document document = docBuilder.parse(source);
 
-            Node signature = document.getElementsByTagName("ds:Signature").item(0);
-            Node ds = signature.getAttributes().getNamedItem("xmlns:ds");
-            Node id = signature.getAttributes().getNamedItem("Id");
+            Node signatureValue = document.getElementsByTagName("ds:SignedInfo").item(0);
+            Node ds = signatureValue.getAttributes().getNamedItem("xmlns:ds");
+            Node id = signatureValue.getAttributes().getNamedItem("xmlns:xzep");
 
-            if (id == null) {
-                callback.callback(false, "Koreňový element NEobsahuje atribút Id podľa profilu XADES_ZEP.");
-            } else if (ds == null){
+            if (ds == null) {
                 callback.callback(false, "Koreňový element NEobsahuje atribút xmlns:ds podľa profilu XADES_ZEP.");
-            }else {
-                callback.callback(true, "Koreňový element obsahuje atribúty Id a xmlns:ds podľa profilu XADES_ZEP.");
+            } else if (id == null){
+                callback.callback(false, "Koreňový element NEobsahuje atribút xmlns:xzep podľa profilu XADES_ZEP.");
+            } else {
+                callback.callback(true, "Koreňový element obsahuje atribúty xmlns:xzep a xmlns:ds podľa profilu XADES_ZEP.");
             }
         } catch (ParserConfigurationException | SAXException e) {
             callback.callback(false, e.getLocalizedMessage());
         } catch (IOException e) {
             callback.callback(false, "Unable to read file");
         }
+
+
 
 
     }
