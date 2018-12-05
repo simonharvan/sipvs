@@ -31,6 +31,8 @@ public class VerificationController implements Initializable, EventHandler<Actio
     public void initialize(URL location, ResourceBundle resources) {
         verificators.add(new DataEnvelopeVerificator());
         verificators.add(new SignatureElementVerificator());
+        verificators.add(new CoreXmlSignatureVerificator());
+
     }
 
     public void setXMLsPath(ActionEvent mouseEvent) {
